@@ -5,7 +5,7 @@ import postsRoutes from "./routes/postsRoutes";
 const app = express();
 app.use(express.json());
 app.use(activityLogger);
-const port = 3000;
+const port = 4001;
 
 app.use("/posts", postsRoutes);
 

@@ -1,5 +1,6 @@
 import {DataAccess} from "../DAL/DataAccess";
 import Post from "../models/Post";
+import {PostDataAccessSQL} from "../DAL/PostDataAccessSQL";
 
 export class PostService {
     private postDataAccess: DataAccess<Post>;
