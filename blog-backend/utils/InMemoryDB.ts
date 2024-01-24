@@ -15,7 +15,7 @@ export class InMemoryDB {
     }
 
     addPost(post: Post) {
-        this.posts.set(post.postId, post);
+        this.posts.set(post.id, post);
     }
 
     getPost(id: number): Post | undefined {

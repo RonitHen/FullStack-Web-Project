@@ -33,5 +33,25 @@ class PostService {
             return Post;
         });
     }
+    updatePost(postId, updateData) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this.postDataAccess.update(postId, updateData);
+            }
+            catch (error) {
+                throw new Error(`Unable to update Post: ${error.message}`);
+            }
+        });
+    }
+    deletePost(postId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this.postDataAccess.delete(postId);
+            }
+            catch (error) {
+                throw new Error(`Unable to delete Post: ${error.message}`);
+            }
+        });
+    }
 }
 exports.PostService = PostService;

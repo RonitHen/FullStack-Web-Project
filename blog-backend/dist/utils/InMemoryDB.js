@@ -12,7 +12,7 @@ class InMemoryDB {
         return InMemoryDB.instance;
     }
     addPost(post) {
-        this.posts.set(post.postId, post);
+        this.posts.set(post.id, post);
     }
     getPost(id) {
         return this.posts.get(id);

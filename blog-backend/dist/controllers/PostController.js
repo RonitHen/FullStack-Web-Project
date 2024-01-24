@@ -21,7 +21,7 @@ class PostController {
     addPost(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const postData = req.body;
-            const post = new Post_1.default(postData.postId, postData.title, postData.content, postData.postedBy, postData.postedDate, postData.postImage);
+            const post = new Post_1.default(postData.id, postData.title, postData.body, postData.posted_by, postData.date, postData.image_url);
             try {
                 yield this.postService.addPost(post);
                 res.status(201).send({ message: `Post created successfully` });
@@ -33,10 +33,35 @@ class PostController {
     }
     getPost(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const postId = +req.params.id;
+            const postId = Number(req.params.id);
             try {
                 const post = yield this.postService.getPost(postId);
                 res.status(200).send(post);
+            }
+            catch (error) {
+                res.status(400).send(error.message);
+            }
+        });
+    }
+    updatePost(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const postId = Number(req.params.id);
+            const postData = req.body;
+            try {
+                yield this.postService.updatePost(postId, postData);
+                res.status(200).send({ message: `Post ${postId} updated successfully` });
+            }
+            catch (error) {
+                res.status(400).send(error.message);
+            }
+        });
+    }
+    deletePost(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const postId = Number(req.params.id);
+            try {
+                yield this.postService.deletePost(postId);
+                res.status(200).send({ message: `Post ${postId} deleted successfully` });
             }
             catch (error) {
                 res.status(400).send(error.message);

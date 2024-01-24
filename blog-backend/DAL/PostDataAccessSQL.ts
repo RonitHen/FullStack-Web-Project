@@ -4,9 +4,8 @@ import { DataAccess } from './DataAccess';
 
 export class PostDataAccessSQL implements DataAccess <Post> {
     async add(post: Post): Promise<void> {
-        console.log(post)
-        const query = 'INSERT INTO posts (title, content, posted_by) VALUES ($1, $2, $3)';
-        await pool.query(query, [post.title, post.content, post.postedBy]);
+        const query = 'INSERT INTO posts (title, body, date, img_url, posted_by) VALUES ($1, $2, $3, $4, $5)';
+        await pool.query(query, [post.title, post.body, post.date, post.image_url, post.posted_by]);
     }
 
     async getAll(): Promise<Post[]> {
@@ -26,7 +25,6 @@ export class PostDataAccessSQL implements DataAccess <Post> {
         if (result.rows.length === 0) {
             throw new Error(`Post with ID ${postId} not found`);
         }
-
         return result.rows[0];
     }
 
@@ -48,7 +46,6 @@ export class PostDataAccessSQL implements DataAccess <Post> {
             throw new Error(`Post with ID ${postId} not found`);
         }
     }
-
 
     async delete(postId: number): Promise<void> {
         const query = 'DELETE FROM posts WHERE id = $1';

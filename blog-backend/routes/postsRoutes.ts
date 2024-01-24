@@ -1,7 +1,6 @@
 import express , { Request, Response }from "express";
 import {PostController} from "../controllers/PostController";
 import {PostService} from "../services/PostService";
-import {PostDataAccessInMemory} from "../DAL/PostDataAccessInMemory";
 import {PostDataAccessSQL} from "../DAL/PostDataAccessSQL";
 
 
@@ -12,4 +11,9 @@ const postController = new PostController(new PostService(new PostDataAccessSQL(
 
 router.post('/', async (req: Request, res: Response) => await postController.addPost(req,res))
 router.get('/:id', async (req: Request, res: Response) => await postController.getPost(req,res))
+router.put('/:id', async (req: Request, res: Response) => await postController.updatePost(req,res))
+router.delete('/:id', async (req: Request, res: Response) => await postController.deletePost(req,res));
+// router.get('/:id', async(req: Request, res: Response)=> await postController.getAllPost(req, res))
+
+
 export default router;

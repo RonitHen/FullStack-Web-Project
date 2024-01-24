@@ -17,9 +17,8 @@ const db_1 = __importDefault(require("./db"));
 class PostDataAccessSQL {
     add(post) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(post);
-            const query = 'INSERT INTO posts (title, content, posted_by) VALUES ($1, $2, $3)';
-            yield db_1.default.query(query, [post.title, post.content, post.postedBy]);
+            const query = 'INSERT INTO posts (title, body, date, img_url, posted_by) VALUES ($1, $2, $3, $4, $5)';
+            yield db_1.default.query(query, [post.title, post.body, post.date, post.image_url, post.posted_by]);
         });
     }
     getAll() {

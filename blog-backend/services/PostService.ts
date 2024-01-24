@@ -1,6 +1,5 @@
 import {DataAccess} from "../DAL/DataAccess";
 import Post from "../models/Post";
-import {PostDataAccessSQL} from "../DAL/PostDataAccessSQL";
 
 export class PostService {
     private postDataAccess: DataAccess<Post>;
@@ -25,4 +24,20 @@ export class PostService {
         }
         return Post;
     }
+    async updatePost(postId: number, updateData: Partial<Post>): Promise<void> {
+        try {
+            await this.postDataAccess.update(postId, updateData);
+        } catch (error) {
+            throw new Error(`Unable to update Post: ${(error as Error).message}`);
+        }
+    }
+
+    async deletePost(postId: number): Promise<void> {
+        try {
+            await this.postDataAccess.delete(postId);
+        } catch (error) {
+            throw new Error(`Unable to delete Post: ${(error as Error).message}`);
+        }
+    }
+
 }
