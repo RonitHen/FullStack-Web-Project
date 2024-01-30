@@ -3,13 +3,17 @@ import Post from '../models/Post';
 import { DataAccess } from './DataAccess';
 
 export class PostDataAccessSQL implements DataAccess <Post> {
-    async add(post: Post): Promise<void> {
+    async add(post :Post) :Promise<void> {
+
         const query = 'INSERT INTO posts (title, body, date, img_url, posted_by) VALUES ($1, $2, $3, $4, $5)';
+
         await pool.query(query, [post.title, post.body, post.date, post.image_url, post.posted_by]);
     }
 
-    async getAll(): Promise<Post[]> {
+    async getAll() :Promise<Post[]> {
+
         const query = 'SELECT * FROM posts';
+
         const result = await pool.query(query);
 
         if (result.rows.length === 0) {
@@ -18,8 +22,10 @@ export class PostDataAccessSQL implements DataAccess <Post> {
         return result.rows;
     }
 
-    async get(postId: number): Promise<Post> {
+    async get(postId :number) :Promise<Post> {
+
         const query = 'SELECT * FROM posts WHERE id = $1';
+
         const result = await pool.query(query, [postId]);
 
         if (result.rows.length === 0) {

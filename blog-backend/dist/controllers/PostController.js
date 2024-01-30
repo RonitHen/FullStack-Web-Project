@@ -43,6 +43,20 @@ class PostController {
             }
         });
     }
+    getAllPosts(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const from = req.query.from ? parseInt(req.query.from) : undefined;
+                const to = req.query.to ? parseInt(req.query.to) : undefined;
+                const filterText = req.query.filterText ? req.query.filterText : undefined;
+                const AllPosts = yield this.postService.getAllPosts(from, to, filterText);
+                res.status(200).send(AllPosts);
+            }
+            catch (error) {
+                res.status(500).send(error.message);
+            }
+        });
+    }
     updatePost(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const postId = Number(req.params.id);

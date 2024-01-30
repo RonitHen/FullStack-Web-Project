@@ -15,7 +15,7 @@ export function PostCard({singlePost}) {
                 // and only if he is admin let him edit or delete a post
                 user && (
                     <>
-                    <Link to={`/editPost`}><button>Edit Post</button></Link>
+                    <Link to={`/post_edit`}><button>Edit Post</button></Link>
                     <Link to={`#`}><button>Delete Post</button></Link>
                     </>
             )}

@@ -10,8 +10,10 @@ export function Admin() {
     return (
         <div>
         {
-             // we want to check if the user is admin
-             // and only if he is admin let him add a post
+            /*
+                we want to check if the user is admin
+                and only if he is admin let him add a post
+            */
 
             user ? (
                 <>

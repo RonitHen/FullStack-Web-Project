@@ -28,7 +28,7 @@ export function Header() {
                 */}
                 <ul>
                     <li><Link className='nav-link' to="/">Home</Link></li>
-                    <li><Link className='nav-link' to="/about">About</Link></li>
+                    <li><Link className='nav-link' to="/about">About Me</Link></li>
                     <li><Link className='nav-link' to="/posts">Posts</Link></li>
                     <li><Link className='nav-link' to="/contact">Contact</Link></li>
                     {user && (<li><Link className='nav-link' to="/admin">Admin</Link></li>)}

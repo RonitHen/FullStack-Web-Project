@@ -63,7 +63,7 @@ export function PostForm() {
                 </><br/>
 
                 {/* Message to the user about the error */}
-                {errors.date && <span style={{color: 'red'}}>{errors.date.message}</span>};
+                {errors.date && <span style={{color: 'red'}}>{errors.date.message}</span>}
                 <br/>
 
                 <button type="submit" >Create Post</button>

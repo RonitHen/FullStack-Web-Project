@@ -1,29 +1,25 @@
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {PostContext} from "../providers/postProvider";
 import {useForm} from "react-hook-form";
 import {UserContext} from "../providers/userProvider";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 
 // In this file we implement a function to edit post in the blog.
 // This function is activated when admin click the edit button on the post card.
 export function EditPost() {
 
-    // To edit current post we need the array of posts, and the functions setPosts and getPostById
-    // from the PostContext (-the represents of all posts objects)
     const {posts, setEditPosts, getPostById} = useContext(PostContext);
-
     const {user} = useContext(UserContext);
-
     const {id} = useParams();
-
     const originalPost = getPostById(id);
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
         defaultValues: originalPost
     });
 
-
-    // When the admin edited a post here we update the properties of the object that
-    // handle the edited post
+    /*
+     When the admin edited a post here we update the properties of the object that
+     handle the edited post
+     */
     const handelEditPost = (dataToEdit) => {
         const editedPost = {
             title: dataToEdit.title,
@@ -31,6 +27,7 @@ export function EditPost() {
             id: id,
             date: dataToEdit.date,
         }
+
         const updatePosts = posts.map((post) => String(post.id) === id ? editedPost : post)
         setEditPosts(updatePosts)
 
@@ -77,7 +74,7 @@ export function EditPost() {
                 </><br/>
 
                 {/* Message to the user about the error */}
-                {errors.date && <span style={{color: 'red'}}>{errors.date.message}</span>};
+                {errors.date && <span style={{color: 'red'}}>{errors.date.message}</span>}
                 <br/>
 
                 <button type="submit" >Edit Post</button>

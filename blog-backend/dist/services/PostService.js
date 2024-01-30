@@ -33,6 +33,16 @@ class PostService {
             return Post;
         });
     }
+    getAllPosts(from, to, filterText) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield this.postDataAccess.getAll(from, to, filterText);
+            }
+            catch (error) {
+                throw new Error(`Unable to filter the Posts: ${error.message}`);
+            }
+        });
+    }
     updatePost(postId, updateData) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

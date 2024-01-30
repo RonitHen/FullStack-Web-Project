@@ -5,7 +5,7 @@ export const PostContext = createContext(null);
 export function PostProvider({children}){
     const [posts, setPosts] = useState([]);
 
-    //
+
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then(response => response.json())
@@ -24,8 +24,10 @@ export function PostProvider({children}){
     }
 
 
-    // We can use this function to find a post-object by its ID.
-    // return -> post: Object = { title, body, id, date}
+    /*
+        We can use this function to find a post-object by its ID.
+        return -> post: Object = { title, body, id, date}
+    */
     const getPostById = (postId) => {
         return posts.find(post => post.id.toString() === postId);
     }

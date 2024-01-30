@@ -14,7 +14,6 @@ export function UserProvider({children}){
         setUser(null)
     }
 
-
     return(
         <UserContext.Provider value={{user, signIn, signOut}}>
             {children}
