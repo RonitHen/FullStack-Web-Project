@@ -14,8 +14,7 @@ export class PostController {
     async addPost(req: Request, res: Response): Promise<void> {
 
         const postData = req.body;
-
-        const post = new Post(postData.id, postData.title, postData.body, postData.posted_by, postData.date, postData.image_url);
+        const post = new Post(postData.id, postData.title, postData.body, postData.date,  postData.img_url, postData.posted_by);
 
         try {
             await this.postService.addPost(post);
@@ -40,14 +39,12 @@ export class PostController {
     async getAllPosts(req: Request, res: Response) {
         try {
             const from = req.query.from ? parseInt(req.query.from as string) : undefined;
-
             const to = req.query.to ? parseInt(req.query.to as string) : undefined;
-
             const filterText = req.query.filterText ? req.query.filterText as string : undefined;
 
-            const AllPosts = await this.postService.getAllPosts(from, to, filterText);
+            const allPosts = await this.postService.getAllPosts(from, to, filterText);
 
-            res.status(200).send(AllPosts);
+            res.status(200).send(allPosts);
         } catch (error) {
             res.status(500).send((error as Error).message);
         }
@@ -56,7 +53,6 @@ export class PostController {
     async updatePost(req: Request, res: Response): Promise<void> {
 
         const postId : number = Number(req.params.id);
-
         const postData = req.body;
 
         try {

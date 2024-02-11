@@ -4,15 +4,15 @@ class Post {
     title : string;
     body : string;
     date : Date;
-    image_url : string;
+    img_url : string;
     posted_by : string;
 
-    constructor(id : number, title : string, body : string, posted_by : string, date : Date , image_url : string ) {
+    constructor(id : number, title : string, body : string, date : Date , img_url : string, posted_by : string ) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.date = date;
-        this.image_url = image_url;
+        this.img_url = img_url;
         this.posted_by = posted_by;
 
     }

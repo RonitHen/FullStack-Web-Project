@@ -21,7 +21,7 @@ class PostController {
     addPost(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const postData = req.body;
-            const post = new Post_1.default(postData.id, postData.title, postData.body, postData.posted_by, postData.date, postData.image_url);
+            const post = new Post_1.default(postData.id, postData.title, postData.body, postData.date, postData.img_url, postData.posted_by);
             try {
                 yield this.postService.addPost(post);
                 res.status(201).send({ message: `Post created successfully` });
@@ -49,8 +49,8 @@ class PostController {
                 const from = req.query.from ? parseInt(req.query.from) : undefined;
                 const to = req.query.to ? parseInt(req.query.to) : undefined;
                 const filterText = req.query.filterText ? req.query.filterText : undefined;
-                const AllPosts = yield this.postService.getAllPosts(from, to, filterText);
-                res.status(200).send(AllPosts);
+                const allPosts = yield this.postService.getAllPosts(from, to, filterText);
+                res.status(200).send(allPosts);
             }
             catch (error) {
                 res.status(500).send(error.message);

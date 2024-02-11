@@ -1,19 +1,20 @@
 import express from 'express';
-import activityLogger from './middlewares/activityLogger';
 import postsRoutes from "./routes/postsRoutes";
+import cors, {CorsOptions} from 'cors';
+import dotenv from 'dotenv';
 
-const app = express();
+dotenv.config();
 
+export const app = express();
+const corsOptions: CorsOptions = {origin: 'http://localhost:3000',};
 app.use(express.json());
+app.use(cors(corsOptions));
 
-app.use(activityLogger);
+const port = 4000;
 
-const port = 4001;
-
-app.use("/posts", postsRoutes);
+app.use("/api/posts", postsRoutes);
 
 
 app.listen(port, () => {
-
     console.log(`Example app listening on port ${port}`)
 })

@@ -5,7 +5,6 @@ import {PostContext} from "../providers/postProvider";
 export function PostList() {
 
     const {posts} = useContext(PostContext);
-
     const [query, setQuery] = useState('');
 
     const handleUserInput = (evt) => {
@@ -13,7 +12,7 @@ export function PostList() {
     }
 
     return (
-        <div>
+        <div className="post-list">
             <h6>You can search post here: </h6>
             <input onChange={handleUserInput} className='form-control-lg'/>
             { posts
