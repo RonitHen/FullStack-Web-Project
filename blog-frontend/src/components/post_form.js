@@ -7,10 +7,8 @@ import {UserContext} from "../providers/userProvider";
 export function PostForm() {
 
     const {addPost} = useContext(PostContext);
-
-    const {register,handleSubmit, formState: {errors}, reset} = useForm();
-
     const {user} = useContext(UserContext);
+    const {register,handleSubmit, formState: {errors}, reset} = useForm();
 
 
     // When the admin create a new post here we create an object that handle

@@ -1,7 +1,7 @@
 export interface DataAccess<T> {
-    add(t :T) :Promise<void>,
+    add(t :T) :Promise<number>,
 
-    delete(id :number) :Promise<void>,
+    delete(id :number) :Promise<number>,
 
     get(id :number) :Promise<T>,
 

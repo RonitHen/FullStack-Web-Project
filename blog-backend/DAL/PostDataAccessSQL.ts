@@ -3,9 +3,10 @@ import Post from '../models/Post';
 import { DataAccess } from './DataAccess';
 
 export class PostDataAccessSQL implements DataAccess <Post> {
-    async add(post :Post) :Promise<void> {
+    async add(post :Post) :Promise<number> {
         const query = 'INSERT INTO posts (title, body, date, img_url, posted_by) VALUES ($1, $2, $3, $4, $5)';
         await pool.query(query, [post.title, post.body, post.date, post.img_url, post.posted_by]);
+        return post.id;
     }
 
     async get(postId :number) :Promise<Post> {
@@ -51,11 +52,12 @@ export class PostDataAccessSQL implements DataAccess <Post> {
         }
     }
 
-    async delete(postId: number): Promise<void> {
+    async delete(postId: number): Promise<number> {
         const query = 'DELETE FROM posts WHERE id = $1';
         const result = await pool.query(query, [postId]);
         if (result.rowCount === 0) {
             throw new Error(`Post with ID ${postId} not found`);
         }
+        return postId;
     }
 }

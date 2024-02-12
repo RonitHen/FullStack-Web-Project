@@ -1,6 +1,7 @@
 import {PostCard} from "./post_card"
 import {useContext, useState} from "react";
 import {PostContext} from "../providers/postProvider";
+import '../styles/pages.css'
 
 export function PostList() {
 
@@ -12,9 +13,9 @@ export function PostList() {
     }
 
     return (
-        <div className="post-list">
-            <h6>You can search post here: </h6>
-            <input onChange={handleUserInput} className='form-control-lg'/>
+        <div>
+            <h4>You can search name here: </h4>
+            <input className={"input-bar"} onChange={handleUserInput}/>
             { posts
                 .filter(post => post.title.toLowerCase().includes(query.toLowerCase()))
                 .map((post) => <PostCard singlePost={post}/>)

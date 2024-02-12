@@ -19,6 +19,7 @@ class PostDataAccessSQL {
         return __awaiter(this, void 0, void 0, function* () {
             const query = 'INSERT INTO posts (title, body, date, img_url, posted_by) VALUES ($1, $2, $3, $4, $5)';
             yield db_1.default.query(query, [post.title, post.body, post.date, post.img_url, post.posted_by]);
+            return post.id;
         });
     }
     get(postId) {
@@ -68,6 +69,7 @@ class PostDataAccessSQL {
             if (result.rowCount === 0) {
                 throw new Error(`Post with ID ${postId} not found`);
             }
+            return postId;
         });
     }
 }
