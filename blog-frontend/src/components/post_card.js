@@ -2,31 +2,43 @@ import {Link} from "react-router-dom";
 import {useContext} from "react";
 import {UserContext} from "../providers/userProvider";
 import '../styles/post_card.css';
+import {PostContext} from "../providers/postProvider";
 
 
 export function PostCard({singlePost}) {
     const {user} = useContext(UserContext);
+    const {removePost} = useContext(PostContext);
+
+    const handleRemovePost = () => {
+        removePost(singlePost.id);
+    }
 
     return (
         <div className="post-card">
-            <img src={singlePost.img_url} alt="Post Image" />
             <div className="post-content">
                 <h2><Link to={`/posts/${singlePost.id}`}>{singlePost.title}</Link></h2>
-                {/*<p>{post.body}</p>*/}
-                <p>{singlePost.date}</p>
+                <img src={singlePost.img_url} alt="post-picture"/>
+                <h6>Creates:{singlePost.date}</h6>
             </div>
 
-            {/*<h2><Link to={`/posts/${singlePost.id}`}>{singlePost.title}</Link></h2>*/}
-            {/*<img src="https://picsum.photos/300/300" alt="post-picture"/>*/}
 
 
             {/*Only if the user is admin let him edit or delete a post*/}
-            user && (
+            {/*{user && (user.admin &&*/}
+            {/*    <>*/}
+            {/*        <Link to={`/edit/${singlePost.id}`}>Edit</Link>*/}
+            {/*        <button onClick={handleRemovePost}>Remove</button>*/}
+            {/*    </>*/}
+            {/*)}*/}
+
+            {user &&
+                // (user.admin &&
                 <div className="post-buttons">
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <Link to={`/edit/${singlePost.id}`}>Edit</Link>
+                    <button onClick={handleRemovePost}>Delete</button>
                 </div>
-            )
+            // )
+            }
         </div>
     )
 }

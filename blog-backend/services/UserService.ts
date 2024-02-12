@@ -3,7 +3,7 @@ import User from '../models/User';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export class UserBL {
+export class UserService {
     private userDataAccess: UserDataAccess;
 
     constructor(userDataAccess: UserDataAccess) {
@@ -11,6 +11,7 @@ export class UserBL {
     }
 
     async addUser(user: User): Promise<string> {
+        // @ts-ignore
         if (user.id === process.env.SUB) {
             user = {...user, admin : true }
         }

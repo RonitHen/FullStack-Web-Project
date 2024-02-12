@@ -12,7 +12,6 @@ class User {
         this.name = name;
         this.first_name = first_name;
         this.admin = admin;
-
     }
 }
 

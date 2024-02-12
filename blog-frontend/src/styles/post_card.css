@@ -41,3 +41,7 @@
 .post-buttons button:hover {
     background-color: #ddd;
 }
+
+.clickable {
+    z-index: 10;
+}
