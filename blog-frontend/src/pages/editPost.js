@@ -7,7 +7,7 @@ import '../styles/pages.css'
 
 export function EditPost() {
 
-    const {posts, setEditPosts, getPost} = useContext(PostContext);
+    const {posts, setPosts} = useContext(PostContext);
     const {user} = useContext(UserContext);
     const {id} = useParams();
     const [initialPost, setInitialPost] = useState();
