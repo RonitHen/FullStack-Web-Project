@@ -39,9 +39,9 @@ ALTER TABLE IF EXISTS public.posts
 -- Insert some posts into the table
 INSERT INTO public.posts(title, content, date, posted_by)
 VALUES
-  ('Post 1', 'Content of post 1.', '2024-02-11', 'img_url', 'Ronit.H'),
-  ('Post 2', 'Content of post 2.', '2024-02-12', 'img_url', 'Ronit.H'),
-  ('Post 3', 'Content of post 3.', '2024-02-13', 'img_url', 'Ronit.H'),
+  ('Eliad Ohayon', 'Content of post 1.', '2024-02-11', 'https://shaharisrael.co.il/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-17-at-09.43.22-1.jpg', 'Ronit.H'),
+  ('Moshe Ohayon', 'Content of post 2.', '2024-02-12', 'https://www.mynet.co.il/picserver/mynet/crop_images/2023/10/09/SkTO9z11bT/SkTO9z11bT_0_0_1079_1582_0_large.jpg', 'Ronit.H'),
+  ('Yehuda Bachar', 'Content of post 3.', '2024-02-13', 'https://www.kipa.co.il/userFiles/2024/02/735-415/325134_f2d3821863ddd1124be07f7d994508dc.jpg', 'Ronit.H'),
   ('Post 4', 'Content of post 4.', '2024-02-14', 'img_url', 'Ronit.H'),
   ('Post 5', 'Content of post 5.', '2024-02-15', 'img_url', 'Ronit.H'),
   ('Post 6', 'Content of post 6.', '2024-02-16', 'img_url','Ronit.H');
@@ -49,7 +49,7 @@ VALUES
 -- Insert some users into the table
 INSERT INTO public.users(id, email, name, first_name, admin)
 VALUES
-  (100387108082396151313, 'uriya.binshtock@gmail.com', 'Uriya Binshtock', 'Uriya', true),
+  (100387108082396151313, 'ronit.heinoch@gmail.com', 'Ronit Heinoch', 'Ronit', true),
   (1, 'ilia.kohanovski@grunitech.com', 'Ilia Kohanovski', 'Ilia', true),
   (2, 'user2@example.com', 'John Doe', 'John', false),
   (3, 'user3@example.com', 'Emily Smith', 'Emily', false),

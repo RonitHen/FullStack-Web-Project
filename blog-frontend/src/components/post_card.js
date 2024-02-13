@@ -9,7 +9,7 @@ export function PostCard({singlePost}) {
     const {user} = useContext(UserContext);
     const {removePost} = useContext(PostContext);
 
-    const handleRemovePost = () => {
+    const handleRemovePost = (event) => {
         removePost(singlePost.id);
     }
 
@@ -18,24 +18,15 @@ export function PostCard({singlePost}) {
             <div className="post-content">
                 <h2><Link to={`/posts/${singlePost.id}`}>{singlePost.title}</Link></h2>
                 <img src={singlePost.img_url} alt="post-picture"/>
-                <h6>Creates:{singlePost.date}</h6>
+                <h6>created: {singlePost.date}</h6>
             </div>
 
-
-
             {/*Only if the user is admin let him edit or delete a post*/}
-            {/*{user && (user.admin &&*/}
-            {/*    <>*/}
-            {/*        <Link to={`/edit/${singlePost.id}`}>Edit</Link>*/}
-            {/*        <button onClick={handleRemovePost}>Remove</button>*/}
-            {/*    </>*/}
-            {/*)}*/}
-
             {user &&
                 // (user.admin &&
                 <div className="post-buttons">
-                    <Link to={`/edit/${singlePost.id}`}>Edit</Link>
-                    <button onClick={handleRemovePost}>Delete</button>
+                    <button type="button"><Link to={`/editPost/${singlePost.id}`}>Edit</Link></button>
+                    <button type="button" onClick={handleRemovePost}>Delete</button>
                 </div>
             // )
             }

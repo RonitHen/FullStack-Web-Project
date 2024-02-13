@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
                 element: <Admin />,
             },
             {
-                path: '/editPost',
+                path: '/editPost/:id',
                 element: <EditPost/>,
             }
 

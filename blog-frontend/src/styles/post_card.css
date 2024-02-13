@@ -1,0 +1,10 @@
+.post-card {
+    width: 500px; /* Adjust as needed */
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    z-index: 5;
+    opacity: 10;
+
+}
